@@ -7,6 +7,7 @@ module.exports = async(req, res) => {
         res.write("该网址不存在，<a href='/'>点此跳转到首页</a>");
         res.end();
     } else {
+        if (!long.startsWith("http://") && !long.startsWith("https://") && !long.startsWith("//")) long = "//" + long;
         res.statusCode = 301;
         res.setHeader("Location", long);
         res.end();

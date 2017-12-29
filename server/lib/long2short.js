@@ -1,8 +1,7 @@
 let lib = require("./lib");
-module.exports = async (req, res) => {
+module.exports = async(req, res) => {
     let url = req.url.substr(7);
     url = decodeURIComponent(url);
-    if (!url.startsWith("http://") && !url.startsWith("https://")) url = "//" + url;
     let short = await lib.generate(url);
     let response = {
         success: true,
